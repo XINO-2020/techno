@@ -30,16 +30,7 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log in')
 
-class QueryForm(FlaskForm):
-    Test_csv = FileField('Test csv', validators=[
-                           FileAllowed(['csv']), DataRequired()])
-    Train_csv = FileField('Train csv', validators=[
-                           FileAllowed(['csv']), DataRequired()])
-    submit = SubmitField('Upload Data')
 
-class csv_name(FlaskForm):
-    test_name = StringField('Test csv Name' , validators=[DataRequired()])
-    train_name = StringField('Train csv Name' , validators=[DataRequired()])
 class UpdateUserForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(),Email()])
     username = StringField('Username', validators=[DataRequired()])
