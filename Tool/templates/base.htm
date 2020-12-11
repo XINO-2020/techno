@@ -70,12 +70,12 @@
       {%if current_user.is_authenticated%}
 
       <li class="border-t md:border-none">
-        <a href="{{url_for('linear')}}"
+        <a href="#"
           class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300 ">Generator</a>
       </li>
       {%if current_user.membership == 'premium'%}
       <li class="border-t md:border-none">
-        <a href="{{url_for('ylinear')}}"
+        <a href="#"
           class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300 ">Predict</a>
       </li>
       {%else%}

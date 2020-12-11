@@ -5,7 +5,7 @@ import os
 import pandas as pd
 from picture_handler import add_profile_pic
 import numpy as np
-from Tool.forms import RegistrationForm, LoginForm, QueryForm, UpdateUserForm
+from Tool.forms import RegistrationForm, LoginForm, UpdateUserForm, DonateForm
 from Tool.models import User
 from flask import render_template, request, url_for, redirect, flash, abort
 from flask_login import current_user, login_required, login_user, logout_user
@@ -26,6 +26,7 @@ stripe.api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2"
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template("index.htm")
+
 
 @app.route('/logout')
 @login_required
@@ -48,7 +49,7 @@ def login():
 
             next = request.args.get('next')
             if next == None or not next[0] == '/':
-                next = url_for('linear')
+                next = url_for('donate')
             return redirect(next)
         elif user is not None and user.check_password(form.password.data) == False:
             error = 'Wrong Password'
@@ -101,6 +102,18 @@ def account():
 
     profile_image = url_for('static', filename=current_user.profile_image)
     return render_template('account.htm', profile_image=profile_image, form=form, pic=pic)
+
+
+@app.route('/donate', methods=['GET', 'POST'])
+@login_required
+def donate():
+    form = DonateForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        people = form.people.data
+        flash('Donation done!')
+    return render_template('donate.htm')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -45,3 +45,9 @@ class UpdateUserForm(FlaskForm):
         if field.data != current_user.username:
             if User.query.filter_by(username=field.data).first():
                 raise ValidationError('The username you chose has already been registered')
+
+
+class DonateForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    people = StringField('Meal for how many', validators=[DataRequired()])
+    submit = SubmitField('Donate')
