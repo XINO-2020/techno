@@ -1,7 +1,8 @@
 # @Arnav Gupta write comments from next time
 
-from Tool import app, db
+from Tool import app, db , mail
 import os
+from flask_mail import Mail, Message
 import pandas as pd
 from picture_handler import add_profile_pic
 import numpy as np
@@ -111,9 +112,24 @@ def donate():
     if form.validate_on_submit():
         email = form.email.data
         people = form.people.data
-        flash('Donation done!')
-    return render_template('donate.htm')
+        points = people * 100
+        current_user.points += points
+        db.session.commit()
+        msg = Message('Food Donation', sender = 'xino.technovity@gmail.com', recipients = [email])
+        msg.body = "Tijil Chabbra will reach your doorstep in 30 mins to collect the food "
+        mail.send(msg)
+        flash('Check your mail for details')
+    return render_template('donate.htm' , form = form)
 
+@app.route('/leaderboard')
+def leaderboard():
+    all_users = User.query.order_by(User.points.desc()).all()
+    n = len(all_users)
+    rank = [] 
+    for users in all_users:
+        rank.append(n)
+        n -= 1
+    return render_template('leaderboard.htm',all_users=all_users,rank=rank)
 
 if __name__ == '__main__':
     app.run(debug=True)
