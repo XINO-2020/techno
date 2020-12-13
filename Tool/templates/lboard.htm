@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Sign up</title>
+        <title>Sign In</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/styles.css">
@@ -11,8 +11,8 @@
         <link rel="shortcut icon" href="../img/logo.png">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
-    <body class="account-page">
-        <nav class="navbar">
+    <body>
+        <nav class="navbar sticky">
             <div class="navbar__pages">
                 <a href="index.htm" class="navbar__logo">
                     <img src="../img/logo.png" alt="logo" class="navbar__logo--img">
@@ -36,34 +36,22 @@
             <a href="donate.htm" class="navbar-responsive__link">Get Started</a>
             <a href="sign in.htm" class="navbar-responsive__link">Sign In</a>
             <a href="sign up.htm" class="navbar-responsive__link">Sign Up</a>
-        </div>        
-        <div class="account">
-            <h2 class="heading-2 mgb-small">Welcome, Tyson</h2>
-            <img src="../img/lboard person.jpg" alt="person" class="account__img">
-            <form action="#" class="form">
-                <div class="input-wrapper">
-                    <input type="text" class="form__input form__input--big" name="username" value="TysonLee">
-                    <label for="username" class="form__label">Username</label>
-                    <div class="underline"></div>
-                </div>
-                <div class="input-wrapper">
-                    <input type="email" class="form__input form__input--big" name="email" value="Tyson@hotmail.com"> 
-                    <label for="email" class="form__label">email</label>
-                    <div class="underline"></div>
-                 </div>
-                 <div class="input-wrapper">
-                    <div class="file-btn">
-                        Upload profile picture
-                        <input type="file" class="form__input form__input--big hidden" required name="pfp"> 
-                    </div>
-                    <div class="underline"></div>
-                </div>
-                <div class="btn-primary">
-                    <a href="account.htm" class="btn-primary__link btn-primary__link--black">Update</a>
-                </div>
-                <br>
-            </form>
         </div>
+
+        <img src="../img/curve.png" alt="leaderboard break" class="lboard-break">
+
+        <div class="lboard-wrapper">
+            <h2 class="heading-2 mgb-small">leaderboard</h2>
+            <div class="lboard">
+                <div class="lboard__item">
+                    <p class="lboard__no">1.</p>
+                    <img src="../img/lboard person.jpg" alt="pfp 1" class="lboard__img">
+                    <p class="lboard__info"> Tyson Lee</p>
+                    <p class="lboard__points">1213 points</p>
+                </div>                
+            </div>
+        </div>
+
     </body>
-    <script src="../js/app.js"></script>
+    <script src="../js/account.js"></script>
 </html>
