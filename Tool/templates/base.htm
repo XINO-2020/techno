@@ -41,11 +41,9 @@
                     <p class="navbar__logo--text">Entree</p>
                 </a>
                 <a href="{{url_for('index')}}" class="navbar__link">Home</a>
-                <a href="{{url_for('index', _anchor='about')}}" class="navbar__link">About</a>
-                <a href="{{url_for('index', _anchor='benefits')}}" class="navbar__link">Benefits</a>
                 {%if current_user.is_authenticated%}
                 <a href="{{url_for('leaderboard')}}" class="navbar__link">Leaderboard</a>
-                <a href="{{url_for('donate')}}" class="navbar__link">Get Started</a>
+                <a href="{{url_for('donate')}}" class="navbar__link">Donations</a>
                 <a href="{{url_for('logout')}}" class="navbar__link">Logout</a>
                 {%else%}
             </div>
@@ -62,11 +60,9 @@
     </nav>
     <div class="navbar-responsive">
         <a href="{{url_for('index')}}" class="navbar-responsive__link">Home</a>
-        <a href="{{url_for('index', _anchor='about')}}" class="navbar__link">About</a>
-        <a href="{{url_for('index', _anchor='benefits')}}" class="navbar__link">Benefits</a>
         {%if current_user.is_authenticated%}
         <a href="{{url_for('leaderboard')}}" class="navbar-responsive__link">Leaderboard</a>
-        <a href="{{url_for('donate')}}" class="navbar-responsive__link">Get Started</a>
+        <a href="{{url_for('donate')}}" class="navbar-responsive__link">Donations</a>
         <a href="{{url_for('logout')}}" class="navbar__link">Logout</a>
         {%else%}
         <a href="{{url_for('login')}}" class="navbar-responsive__link">Sign In</a>
