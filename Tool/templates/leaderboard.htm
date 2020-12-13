@@ -13,7 +13,7 @@
         <div class="lboard__item">
 
             <p class="lboard__no">{{rank.pop()}}</p>
-            <img src="{{url_for('static', filename=current_user.profile_image)}}" alt="pfp 1" class="lboard__img">
+            <img src="{{url_for('static', filename=user.profile_image)}}" alt="pfp 1" class="lboard__img">
             <p class="lboard__info"> {%if user == current_user%}
             <td>{{user.username}}(You)</td>
             {%else%}
