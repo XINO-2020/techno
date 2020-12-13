@@ -32,17 +32,13 @@ def login():
     form = LoginForm()
     error = ''
     if form.validate_on_submit():
-
         user = User.query.filter_by(email=form.email.data).first()
-
+        print('hello')
         if user is not None and user.check_password(form.password.data):
 
             login_user(user)
 
-            next = request.args.get('next')
-            if next == None or not next[0] == '/':
-                next = url_for('donate')
-            return redirect(next)
+            return redirect(url_for('index'))
         elif user is not None and user.check_password(form.password.data) == False:
             error = 'Wrong Password'
         elif user is None:
@@ -59,6 +55,7 @@ def register():
                     username=form.username.data,
                     email=form.email.data,
                     password=form.password.data)
+        print('bie')
         db.session.add(user)
         db.session.commit()
 

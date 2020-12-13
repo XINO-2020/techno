@@ -1,10 +1,10 @@
 {%extends 'base.htm'%} {%block content%}
 <div class="sign-up">
     <h2 class="heading-2">Sign In</h2>
-    <form action="#" class="form">
+    <form method = "POST" class="form">
       {{form.hidden_tag()}}
         <div class="input-wrapper">
-          {{form.email(class="form__input form__input--big" ,type = "email")}}
+          {{form.email(class="form__input form__input--big")}}
             <label for="email" class="form__label">email</label>
             {%if form.email.errors%}
             {%for error in form.email.errors%}
