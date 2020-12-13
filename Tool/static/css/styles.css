@@ -49,8 +49,7 @@ body {
   background-image: url("../img/hero main.jpg");
   background-size: 100% 100%;
   position: relative;
-  background-repeat: no-repeat;
-  background-attachment: fixed; }
+  background-repeat: no-repeat; }
   @media only screen and (max-width: 56.25em) {
     .hero {
       height: 70vh; } }
@@ -234,8 +233,7 @@ body {
   background-image: url("../img/join us page hero.jpg");
   background-size: 100% 100%;
   position: relative;
-  background-repeat: no-repeat;
-  background-attachment: fixed; }
+  background-repeat: no-repeat; }
   @media only screen and (max-width: 56.25em) {
     .join-us-hero {
       height: 60vh; } }
@@ -312,7 +310,8 @@ body {
   border-radius: 10px;
   -webkit-backdrop-filter: blur(5px);
   margin: 10rem auto 2rem auto;
-  box-shadow: 0 5px 6rem rgba(0, 0, 0, 0.16); }
+  box-shadow: 0 5px 6rem rgba(0, 0, 0, 0.16);
+}
   @media only screen and (max-width: 56.25em) {
     .sign-up, .sign-in, .account {
       width: 50%; } }
@@ -345,45 +344,6 @@ body {
   border-radius: 50%;
   margin: auto; }
 
-.loader-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: #ffffff;
-  z-index: 2000; }
-
-.loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center; }
-  .loader__animation {
-    height: 5rem;
-    width: 5rem;
-    border-radius: 50%;
-    background-color: #256CF5;
-    animation: loading 1s infinite;
-    margin-right: 5rem; }
-  .loader__text {
-    text-transform: uppercase;
-    font-size: 3rem;
-    background-image: linear-gradient(to right, #00B4F5, #15F5DD);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent; }
-
-@keyframes loading {
-  0% {
-    transform: translateY(0); }
-  50% {
-    transform: translateY(10px); }
-  100% {
-    transform: translateY(0); } }
-
 .navbar {
   position: absolute;
   top: 0;
@@ -402,10 +362,11 @@ body {
     margin-right: 5rem;
     visibility: visible; }
     .navbar__logo--text {
-      font-size: 2.8rem;
+      font-size: 2.3rem;
       color: #ffffff;
       font-weight: 700;
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      text-decoration: none;}
   .navbar__link:link, .navbar__link:visited {
     text-decoration: none;
     font-size: 1.6rem;
@@ -723,4 +684,8 @@ body {
     cursor: pointer !important;
     height: 42px;
     width: 100%;
+  }
+
+  .container {
+      margin-top: 10rem;
   }
