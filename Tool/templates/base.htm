@@ -34,33 +34,45 @@
     </head>
     <body>
       </div>
-        <nav class="navbar sticky">
+      <nav class="navbar sticky">
             <div class="navbar__pages">
                 <a href="index.htm" class="navbar__logo">
+                    <img src="static/img/logo.png" alt="logo" class="navbar__logo--img">
                     <p class="navbar__logo--text">Entree</p>
                 </a>
                 <a href="{{url_for('index')}}" class="navbar__link">Home</a>
                 <a href="{{url_for('index', _anchor='about')}}" class="navbar__link">About</a>
                 <a href="{{url_for('index', _anchor='benefits')}}" class="navbar__link">Benefits</a>
+                {%if current_user.is_authenticated%}
+                <a href="{{url_for('leaderboard')}}" class="navbar__link">Leaderboard</a>
                 <a href="{{url_for('donate')}}" class="navbar__link">Get Started</a>
+                <a href="{{url_for('logout')}}" class="navbar__link">Logout</a>
+                {%else%}
             </div>
             <div class="navbar__account">
                 <div class="navbar__account--links">
                     <a href="{{url_for('login')}}" class="navbar__link">Sign In</a>
                     <a href="{{url_for('register')}}" class="navbar__link navbar__create-link">Sign Up</a>
                 </div>
+                {%endif%}
                 <div class="toggleNav"></div>
             </div>
+            <div class="toggleNav"></div>
         </div>
     </nav>
     <div class="navbar-responsive">
         <a href="{{url_for('index')}}" class="navbar-responsive__link">Home</a>
-        <a href="{{url_for('index', _anchor='about')}}" class="navbar-responsive__link">About</a>
-        <a href="{{url_for('index', _anchor='benefits')}}" class="navbar-responsive__link">Benefits</a>
+        <a href="{{url_for('index', _anchor='about')}}" class="navbar__link">About</a>
+        <a href="{{url_for('index', _anchor='benefits')}}" class="navbar__link">Benefits</a>
+        {%if current_user.is_authenticated%}
+        <a href="{{url_for('leaderboard')}}" class="navbar-responsive__link">Leaderboard</a>
         <a href="{{url_for('donate')}}" class="navbar-responsive__link">Get Started</a>
+        <a href="{{url_for('logout')}}" class="navbar__link">Logout</a>
+        {%else%}
         <a href="{{url_for('login')}}" class="navbar-responsive__link">Sign In</a>
         <a href="{{url_for('register')}}" class="navbar-responsive__link">Sign Up</a>
-    </div>
+        {%endif%}
+
     {%block content%} {%endblock%}
 
     <div>
