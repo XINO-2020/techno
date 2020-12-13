@@ -17,7 +17,6 @@ from flask import send_from_directory
 def index():
     return render_template("index.htm")
 
-
 @app.route('/logout')
 @login_required
 def logout():
@@ -102,7 +101,7 @@ def donate():
         points = people * 100
         current_user.points += points
         db.session.commit()
-        msg = Message('Food Donation', sender = 'xino.technovity@gmail.com', recipients = [email])
+        msg = Message('Food Donation', sender = 'technovity.xino@gmail.com', recipients = [email])
         msg.body = "******* will reach your doorstep in 30 mins to collect the food "
         mail.send(msg)
         flash('Check your mail for details')
