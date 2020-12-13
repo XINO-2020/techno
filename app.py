@@ -73,7 +73,7 @@ def account():
     if form.validate_on_submit():
         current_user.email = form.email.data
         current_user.username = form.username.data
-
+        current_user.anonymous = form.anonymous.data
         if form.picture.data is not None:
             id = current_user.id
             pic = add_profile_pic(form.picture.data, id)
@@ -85,7 +85,7 @@ def account():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
-
+        form.anonymous.data = current_user.anonymous
     profile_image = url_for('static', filename=current_user.profile_image)
     return render_template('account.htm', profile_image=profile_image, form=form, pic=pic)
 
