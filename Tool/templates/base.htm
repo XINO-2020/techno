@@ -1,128 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  {%block head%} {%endblock%}
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.7.6/tailwind.min.css'>
-  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/main.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
-  <title>EzML</title>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script>
-
-    $(document).ready(function () {
-      $("a").on('click', function (event) {
-
-        if (this.hash !== "") {
-          event.preventDefault();
-
-          var hash = this.hash;
-
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 800, function () {
-            window.location.hash = hash;
-          });
-        }
-      });
-    });
-
-  </script>
-
-</head>
-
-<body class="font-medium ">
-  <nav class="nav flex flex-wrap items-center justify-between py-4 px-2 ">
-    <div class="flex flex-no-shrink items-center mr-6  text-gray-500">
-      <span class=" text-xl tracking-tight font-bold">EzML</span>
-    </div>
-
-    <input class="menu-btn hidden" type="checkbox" id="menu-btn">
-    <label class="menu-icon block cursor-pointer md:hidden px-2 py-4 relative select-none" for="menu-btn">
-      <span class="navicon bg-grey-darkest flex items-center relative"></span>
-    </label>
-
-    <ul class="menu border-b md:border-none flex justify-end list-reset m-0 w-full md:w-auto">
-      {%if current_user.is_authenticated%}
-
-      <li class="border-t md:border-none">
-        <a href="#"
-          class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300 ">Generator</a>
-      </li>
-      {%if current_user.membership == 'premium'%}
-      <li class="border-t md:border-none">
-        <a href="#"
-          class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300 ">Predict</a>
-      </li>
-      {%else%}
-      <li class="border-t md:border-none">
-        <a class="block md:inline-block px-3 py-3 no-underline text-gray-600 hover:text-gray-600 cursor-not-allowed "
-          onclick="alert()">Predict</a>
-      </li>
-      {%endif%}
-      <li class=" border-t md:border-none">
-        <a href="{{ url_for('account') }}"
-          class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300">Account</a>
-      </li>
-      <li class="border-t md:border-none">
-        <a href="{{ url_for('logout') }}"
-          class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300">Logout,
-          {{current_user.username}}</a>
-      </li>
-
-
-      {%else%}
-      <li class="border-t md:border-none">
-        <a href="/" class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300">Home</a>
-      </li>
-      <li class="border-t md:border-none">
-        <a href="#abt" class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300">About
-          the app</a>
-      </li>
-      <li class="border-t md:border-none">
-        <a href="#feat"
-          class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300">Features</a>
-      </li>
-      <li class="border-t md:border-none">
-        <a href="#pricing"
-          class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300">Pricing</a>
-      </li>
-      <li class="border-t md:border-none">
-        <a href="{{url_for('register')}}"
-          class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300">Register</a>
-      </li>
-      <li class="border-t md:border-none">
-        <a href="{{url_for('login')}}"
-          class="block md:inline-block px-3 py-3 no-underline text-gray-200 hover:text-purple-300">Login</a>
-      </li>
-      {%endif%}
-    </ul>
-
-  </nav>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Sign up</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/styles/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="static/img/logo.png">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar sticky">
+            <div class="navbar__pages">
+                <a href="index.htm" class="navbar__logo">
+                    <img src="static/img/logo.png" alt="logo" class="navbar__logo--img">
+                    <p class="navbar__logo--text">Entree</p>
+                </a>
+                <a href="{{url_for('index')}}" class="navbar__link">Home</a>
+                <a href="join us.htm" class="navbar__link">Join us</a>
+                <a href="{{url_for('donate')}}" class="navbar__link">Get Started</a>
+            </div>
+            <div class="navbar__account">
+                <div class="navbar__account--links">
+                    <a href="{{url_for('login')}}" class="navbar__link">Sign In</a>
+                    <a href="{{url_for('register')}}" class="navbar__link navbar__create-link">Sign Up</a>
+                </div>
+                <div class="toggleNav"></div>
+            </div>
+        </nav>
+        <div class="navbar-responsive">
+            <a href="{{url_for('index')}}" class="navbar-responsive__link">Home</a>
+            <a href="join us.htm" class="navbar-responsive__link">Join Us</a>
+            <a href="{{url_for('donate')}}" class="navbar-responsive__link">Get Started</a>
+            <a href="{{url_for('login')}}" class="navbar-responsive__link">Sign In</a>
+            <a href="{{url_for('register')}}" class="navbar-responsive__link">Sign Up</a>
+        </div>
   {%block content%} {%endblock%}
 
   <div>
