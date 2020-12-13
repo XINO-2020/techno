@@ -3,9 +3,7 @@
 from Tool import app, db , mail
 import os
 from flask_mail import Mail, Message
-import pandas as pd
 from picture_handler import add_profile_pic
-import numpy as np
 from Tool.forms import RegistrationForm, LoginForm, UpdateUserForm, DonateForm
 from Tool.models import User
 from flask import render_template, request, url_for, redirect, flash, abort

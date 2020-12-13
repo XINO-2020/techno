@@ -6,8 +6,7 @@
         <title>Sign up</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="static/css/styles.css">
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
           <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -30,17 +29,19 @@
               crossorigin="anonymous"></script>
             <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
         <link rel="shortcut icon" href="static/img/logo.png">
+        <link rel="stylesheet" href="static/css/styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
+      </div>
         <nav class="navbar sticky">
             <div class="navbar__pages">
                 <a href="index.htm" class="navbar__logo">
-                    <img src="static/img/logo.png" alt="logo" class="navbar__logo--img">
                     <p class="navbar__logo--text">Entree</p>
                 </a>
                 <a href="{{url_for('index')}}" class="navbar__link">Home</a>
-                <a href="join us.htm" class="navbar__link">Join us</a>
+                <a href="{{url_for('index', _anchor='about')}}" class="navbar__link">About</a>
+                <a href="{{url_for('index', _anchor='benefits')}}" class="navbar__link">Benefits</a>
                 <a href="{{url_for('donate')}}" class="navbar__link">Get Started</a>
             </div>
             <div class="navbar__account">
@@ -50,12 +51,12 @@
                 </div>
                 <div class="toggleNav"></div>
             </div>
-            <div class="toggleNav"></div>
         </div>
     </nav>
     <div class="navbar-responsive">
         <a href="{{url_for('index')}}" class="navbar-responsive__link">Home</a>
-        <a href="join us.htm" class="navbar-responsive__link">Join Us</a>
+        <a href="{{url_for('index', _anchor='about')}}" class="navbar-responsive__link">About</a>
+        <a href="{{url_for('index', _anchor='benefits')}}" class="navbar-responsive__link">Benefits</a>
         <a href="{{url_for('donate')}}" class="navbar-responsive__link">Get Started</a>
         <a href="{{url_for('login')}}" class="navbar-responsive__link">Sign In</a>
         <a href="{{url_for('register')}}" class="navbar-responsive__link">Sign Up</a>
