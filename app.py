@@ -14,15 +14,6 @@ from picture_handler import add_profile_pic
 from sqlalchemy import desc, asc
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
-import csv
-from sklearn.linear_model import LinearRegression, LogisticRegression
-import stripe
-
-ALLOWED_EXTENSIONS = {'csv'}
-public_key = 'pk_test_6pRNASCoBOKtIshFeQd4XMUh'
-
-stripe.api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2"
-
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -110,13 +101,14 @@ def account():
 def donate():
     form = DonateForm()
     if form.validate_on_submit():
-        email = form.email.data
+        email = current_user.email
         people = form.people.data
+        address = form.address.data
         points = people * 100
         current_user.points += points
         db.session.commit()
         msg = Message('Food Donation', sender = 'xino.technovity@gmail.com', recipients = [email])
-        msg.body = "Tijil Chabbra will reach your doorstep in 30 mins to collect the food "
+        msg.body = "******* will reach your doorstep in 30 mins to collect the food "
         mail.send(msg)
         flash('Check your mail for details')
     return render_template('donate.htm' , form = form)
@@ -125,7 +117,7 @@ def donate():
 def leaderboard():
     all_users = User.query.order_by(User.points.desc()).all()
     n = len(all_users)
-    rank = [] 
+    rank = []
     for users in all_users:
         rank.append(n)
         n -= 1

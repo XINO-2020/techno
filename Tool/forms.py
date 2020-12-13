@@ -48,6 +48,6 @@ class UpdateUserForm(FlaskForm):
 
 
 class DonateForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
     people = IntegerField('Meal for how many', validators=[DataRequired()])
+    address = StringField('Your Address', validators=[DataRequired()])
     submit = SubmitField('Donate')
