@@ -6,8 +6,8 @@
 <img src="static/img/curve.png" alt="leaderboard break" class="lboard-break">
 
 <div class="lboard-wrapper">
-    <h1class="heading-2 mgb-small">leaderboard</h1>
-       <h1>your points = {{current_user.points}}</h1>
+    <h1 class="heading-2 mgb-small">Leaderboard</h1>
+    <h1>your points = {{current_user.points}}</h1>
     <div class="lboard">
       {%for user in all_users%}
         <div class="lboard__item">
@@ -16,6 +16,8 @@
             <img src="{{url_for('static', filename=user.profile_image)}}" alt="pfp 1" class="lboard__img">
             <p class="lboard__info"> {%if user == current_user%}
             <td>{{user.username}}(You)</td>
+            {%elif user.anonymous == 'Yes'%}
+            <td>Anonymous123</td>
             {%else%}
             <td>{{user.username}}</td>
             {%endif%}</p>

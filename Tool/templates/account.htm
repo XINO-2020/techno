@@ -1,67 +1,62 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Account</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/styles.css">
-        <link rel="shortcut icon" href="../img/logo.png">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-    <body class="account-page">
-        <nav class="navbar">
-            <div class="navbar__pages">
-                <a href="index.htm" class="navbar__logo">
-                    <p class="navbar__logo--text">Entree</p>
-                </a>
-                <a href="index.htm" class="navbar__link">Home</a>
-                <a href="join us.htm" class="navbar__link">Join us</a>
-                <a href="donate.htm" class="navbar__link">Get Started</a>
-            </div>
-            <div class="navbar__account">
-                <div class="navbar__account--links">
-                    <a href="sign in.htm" class="navbar__link">Sign In</a>
-                    <a href="sign up.htm" class="navbar__link navbar__create-link">Sign Up</a>
-                </div>
-                <div class="toggleNav"></div>
-            </div>
-        </nav>
-        <div class="navbar-responsive">
-            <a href="index.htm" class="navbar-responsive__link">Home</a>
-            <a href="join us.htm" class="navbar-responsive__link">Join Us</a>
-            <a href="donate.htm" class="navbar-responsive__link">Get Started</a>
-            <a href="sign in.htm" class="navbar-responsive__link">Sign In</a>
-            <a href="sign up.htm" class="navbar-responsive__link">Sign Up</a>
-        </div>        
-        <div class="account">
-            <h2 class="heading-2 mgb-small">Welcome, Tyson</h2>
-            <img src="../img/lboard person.jpg" alt="person" class="account__img">
-            <form action="#" class="form">
-                <div class="input-wrapper">
-                    <input type="text" class="form__input form__input--big" name="username" value="TysonLee">
-                    <label for="username" class="form__label">Username</label>
-                    <div class="underline"></div>
-                </div>
-                <div class="input-wrapper">
-                    <input type="email" class="form__input form__input--big" name="email" value="Tyson@hotmail.com"> 
-                    <label for="email" class="form__label">email</label>
-                    <div class="underline"></div>
-                 </div>
-                 <div class="input-wrapper">
-                    <div class="file-btn">
-                        Upload profile picture
-                        <input type="file" class="form__input form__input--big hidden" required name="pfp"> 
-                    </div>
-                    <div class="underline"></div>
-                </div>
-                <div class="btn-main">
-                    <a href="account.htm" class="btn-primary__link btn-primary__link--black">Update</a>
-                </div>
-                <br>
-            </form>
-        </div>
-    </body>
-    <script src="../js/app.js"></script>
-</html>
+{%extends "base.htm"%}
+{%block content%}
+<div class="container jumbotron">
+  <div align='center' class="border ">
+    <h1>Welcome To the Page for {{current_user.username}}</h1>
+    Your Profile Image: <br>
+    <img align = 'center' src="{{url_for('static' , filename = current_user.profile_image)}}" >
+
+
+  </div>
+  <div class="container border" align ="center">
+    <form method="POST" action = "" enctype="multipart/form-data">
+      {{form.hidden_tag()}}
+      <div class="form-group">
+          {{form.username.label(class="form-group")}}
+          {{form.username(class="form-control col-md-6")}}
+          {%if form.username.errors%}
+            {%for error in form.username.errors%}
+              <small class = 'text-danger'>{{error}}</small>
+            {%endfor%}
+          {%endif%}
+      </div>
+      <div class="form-group">
+        {{form.email.label(class="form-group")}}
+        {{form.email(class="form-control col-md-6")}}
+        {%if form.email.errors%}
+          {%for error in form.email.errors%}
+            <small class = 'text-danger'>{{error}}</small>
+          {%endfor%}
+        {%endif%}
+      </div>
+      <div class="form-group">
+        {{form.picture.label(class="form-group")}}
+        {{form.picture(class="form-control-file col-md-6")}}
+        {%if form.picture.errors%}
+          {%for error in form.picture.errors%}
+            <small class = 'text-danger'>{{error}}</small>
+          {%endfor%}
+        {%endif%}
+      </div>
+      <div class="form-group">
+        {{form.anonymous.label(class="form-group")}}
+        {{form.anonymous()}}
+        {%if form.anonymous.errors%}
+          {%for error in form.anonymous.errors%}
+            <small class = 'text-danger'>{{error}}</small>
+          {%endfor%}
+        {%endif%}
+      </div>
+      <div class="form-group">
+        {{form.submit(class = 'btn btn-primary')}}
+      </div>
+    </form>
+
+  </div>
+
+</div>
+
+
+
+
+{%endblock%}
