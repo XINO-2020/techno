@@ -6,8 +6,8 @@
 <img src="static/img/curve.png" alt="leaderboard break" class="lboard-break">
 
 <div class="lboard-wrapper">
-    <h1 class="heading-2 mgb-small">Leaderboard</h1>
-    <h1>your points = {{current_user.points}}</h1>
+    <h2 class="heading-2 mgb-small">Leaderboard</h2>
+    <h3 class="points">your points = {{current_user.points}}</h3>
     <div class="lboard">
       {%for user in all_users%}
         <div class="lboard__item">

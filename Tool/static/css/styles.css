@@ -335,8 +335,19 @@ body {
   z-index: -1; }
 
 .lboard-wrapper {
-  margin-top: 10rem;
+  margin-top: 5rem;
   padding: 0rem 5rem; }
+
+.lboard-wrapper .points {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+  background-image: linear-gradient(to right, #00B4F5, #15F5DD);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 .account__img {
   display: block;
@@ -500,6 +511,11 @@ body {
   text-transform: capitalize;
   font-weight: 600;
   font-size: 5rem; }
+
+  .heading-3 {
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 4rem; }
 
 .btn-main {
   display: inline-flex;
@@ -688,4 +704,41 @@ body {
 
   .container {
       margin-top: 10rem;
+  }
+
+  .container__img {
+    width: 50%;
+  }
+
+  .form-group label{
+    font-size: 1.6rem;
+  }
+
+  .form-group input {
+    outline: none;
+    border: none;
+    border-bottom: 1px #000 solid;
+    border-radius: 0;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    transition: all .2s ease-in-out;
+  }
+
+  .form-group input:focus, .form-group input:valid {
+    outline: none;
+  }
+
+  .form-group input[type='submit'] {
+    background-color: rgba(0, 180, 245, .8);
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 100px;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    transition: all .2s ease-in-out;
+  }
+
+  .form-group input[type='submit']:hover {
+    background-color: rgba(0, 180, 245, 1);
   }

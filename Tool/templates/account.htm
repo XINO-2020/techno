@@ -1,14 +1,11 @@
 {%extends "base.htm"%}
 {%block content%}
-<div class="container jumbotron">
-  <div align='center' class="border ">
-    <h1>Welcome To the Page for {{current_user.username}}</h1>
-    Your Profile Image: <br>
-    <img align = 'center' src="{{url_for('static' , filename = current_user.profile_image)}}" >
-
-
+<div class="container jumbotron account">
+  <div align='center'>
+    <h2 class="heading-2 mgb-small">Welcome, {{current_user.username}}</h2>
+    <img align = 'center' src="{{url_for('static' , filename = current_user.profile_image)}}" class="container__img">
   </div>
-  <div class="container border" align ="center">
+  <div class="container" align ="center">
     <form method="POST" action = "" enctype="multipart/form-data">
       {{form.hidden_tag()}}
       <div class="form-group">
@@ -48,12 +45,10 @@
         {%endif%}
       </div>
       <div class="form-group">
-        {{form.submit(class = 'btn btn-primary')}}
+        {{form.submit}}
       </div>
     </form>
-
   </div>
-
 </div>
 
 
