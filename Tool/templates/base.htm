@@ -6,7 +6,7 @@
         <title>Sign up</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="static/css/styles.css">
+
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -31,6 +31,7 @@
             <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
         <link rel="shortcut icon" href="static/img/logo.png">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="static/css/styles.css">
     </head>
     <body>
         <nav class="navbar sticky">
@@ -43,6 +44,7 @@
                 {%if current_user.is_authenticated%}
                 <a href="{{url_for('leaderboard')}}" class="navbar__link">Leaderboard</a>
                 <a href="{{url_for('donate')}}" class="navbar__link">Get Started</a>
+                <a href="{{url_for('logout')}}" class="navbar__link">Logout</a>
                 {%else%}
             </div>
             <div class="navbar__account">
@@ -61,6 +63,7 @@
         {%if current_user.is_authenticated%}
         <a href="{{url_for('leaderboard')}}" class="navbar-responsive__link">Leaderboard</a>
         <a href="{{url_for('donate')}}" class="navbar-responsive__link">Get Started</a>
+        <a href="{{url_for('logout')}}" class="navbar__link">Logout</a>
         {%else%}
         <a href="{{url_for('login')}}" class="navbar-responsive__link">Sign In</a>
         <a href="{{url_for('register')}}" class="navbar-responsive__link">Sign Up</a>
